@@ -1,96 +1,86 @@
-function comecar() {
+function comecar(){
     var nome = document.getElementById("exampleFormControlInput1").value;
-    show(nome);
-  }
-  
-  function show(nome) {
+     show(nome);
+}
+
+function show(nome){
     document.getElementById("nomePrint").textContent = nome;
     var div = document.getElementById("selects-div");
-    if (nome && nome.trim() !== "") {
-      div.style.display = "block";
-      document.getElementById("exampleFormControlInput1").style.background =
-        "none";
-    } else {
-      document.getElementById("error").style.display = "flex";
+    if(nome && nome.trim() !== ""){
+        div.style.display = "block"
+        document.getElementById("exampleFormControlInput1").style.background = "none";
     }
-  }
-  
-  function fechar() {
-    document.getElementById("error").style.display = "none";
-    document.getElementById("exampleFormControlInput1").style.background =
-      "lightpink";
-  }
-  
-  function calcularTotal() {
-    var selectPratos = document.getElementById("selectPrato");
-    var selectBebidas = document.getElementById("selectBebida");
-    var selectSobremesas = document.getElementById("selectSobremesa");
+    else{
+        document.getElementById("error").style.display = "block"
+    }
+}
+
+function fechar(){
+    document.getElementById("error").style.display = "none"
+    document.getElementById("exampleFormControlInput1").style.background = "lightpink";
+}
+
+function calcularTotal(){
+    var selectPratos = document.getElementById("selectPratos");
+    var selectBebidas = document.getElementById("selectBebidas");
+    var selectSobremesas = document.getElementById("selectSobremesas");
     var resultadoSpan = document.getElementById("resultado");
-  
-    var total = 0;
-    var prato = 0;
-    var bebida = 0;
-    var sobremesa = 0;
-  
-    switch (selectPratos.value) {
-      case "Strogonoff de carne":
-        total += 20.00;
-        prato = 20.00;
-        break;
-      case "Frango a milanesa + Acompanhamentos":
-        total += 17.00;
-        prato = 17.00;
-        break;
-      case "Macarrão ao molho branco":
-        total += 23.00;
-        prato = 23.00;
-        break;
-    }
-  
-    switch (selectBebidas.value) {
-      case "Sucos":
-        total += 8.00;
-        bebida = 8.00;
-        break;
-      case "Agua":
-        total += 3.20;
-        bebida = 3.20;
-        break;
-      case "Refrigerante":
-        total += 7.00;
-        bebida = 7.00;
-        break;
-    }
-  
-    switch (selectSobremesas.value) {
-      case "Petit Gateau":
-        total += 20.00;
-        sobremesa = 20.00;
-        break;
-      case "Banana Split":
-        total += 22.00;
-        sobremesa = 22.00;
-        break;
-      case "Milkshake":
-        total += 17.00;
-        sobremesa = 17.00;
-        break;
-    }
-  
-    document.getElementById("total").style.display = "flex";
-    document.getElementById("prato-pronto").innerHTML = prato.toFixed(2);
-    document.getElementById("bebida-pronto").innerHTML = bebida.toFixed(2);
-    document.getElementById("sobremesa-pronto").innerHTML = sobremesa.toFixed(2);
-  
-    resultadoSpan.textContent = "R$ " + total.toFixed(2);
-  }
-  
-  function limpar() {
-    document.getElementById("total").style.display = "none";
-    document.getElementById("selects-div").style.display = "none";
-    document.getElementById("exampleFormControlInput1").value = "";
-    document.getElementById("resultado").value = "";
-    document.getElementById("selectPrato").value = "Selecione um prato";
-    document.getElementById("selectBebida").value = "Selecione uma bebida";
-    document.getElementById("selectSobremesa").value = "Selecione uma sobremesa";
-  }
+
+
+var total = 0;
+var pratos = 0;
+var bebidas = 0;
+var sobremesas = 0;
+
+switch (selectpratos){
+    case "Coxinha (c. catupiry)":
+        total += 8,50;
+        pratos = 8,50;
+    break;
+    case "Empadão de camarão":
+        total += 12,90;
+        pratos = 12,90;
+    break;
+    case "Sanduiche natural":
+        total += 9,80;
+        pratos = 9,80;
+    break;
+}
+
+switch (selectbebidas){
+    case "Cafés":
+        total += 9,0;
+        bebidas = 9,0;
+    break;
+    case "Sucos naturais":
+        total += 11,0;
+        bebidas = 11,0;
+    break;
+    case "Chás":
+        total += 8,50;
+        bebidas = 8,50;
+    break;
+}
+
+switch (selectsobremesas){
+    case "Fatia de Bolo":
+        total += 9,50;
+        sobremesas = 9,50;
+    break;
+    case "Bombons":
+        total += 4,0;
+        sobremesas = 4,0;
+    break;
+    case "Sonhos":
+        total += 10,0;
+        sobremesas = 10,0;
+    break;
+}
+
+document.getElementById("pedido-pronto").style.display = "block"
+document.getElementById("bebidas-pronto").textContent = selectbebidas.value + " - R$ " + bebidas.toFixed(2);
+document.getElementById("sobremesas-pronto").textContent = selectsobremesas.value + " - R$ " + sobremesas.toFixed(2);
+document.getElementById("pratos-pronto").textContent = selectpratos.value + " - R$ " + pratos.toFixed(2);
+resultadoSpan.textContent = " R$ " + total.toFixed(2);
+
+}
